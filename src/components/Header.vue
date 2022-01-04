@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Header",
   methods: {
@@ -23,9 +24,9 @@ export default {
     }
   },
   computed: {
-    user() {
-      return this.$store.state.user;
-    },
+    ...mapState({
+      user: "user"
+    }),
     title() {
       if (this.isAuthenticated()) {
         return `$${this.user.revenue}`;
